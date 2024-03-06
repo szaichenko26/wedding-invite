@@ -1,0 +1,198 @@
+$accent:#4B6279;
+$primary: #2A2A2A;
+$radio: #F77A05;
+
+%glyphcon {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #F5ECE5;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+}
+h2 {
+  position: relative;
+  padding-top: 30px;
+  color: $accent;
+}
+ul {
+  width: 150px;
+  list-style-type: none;
+  position: relative;
+}
+li {
+  display: block;
+  height: 50px;
+  text-align: left;
+}
+.card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20%;
+  padding: 10px;
+}
+
+.title {
+  font-family: Poiret One, serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: #2A2A2A;
+}
+
+//RADIO BUTTON BEGINS
+
+//-----------------------------------------
+
+//Hides default radio.
+input[type="radio"] {
+  display: block;
+  @extend %glyphcon;
+}
+
+//Hover effect for Checkmark.
+input[type="radio"]:hover + label .outer .inner:before {
+  opacity: .2;
+  display: inline-block;
+  position: absolute;
+  transform: scale(1);
+  transition: all .3s ease;
+}
+//Effect when box is checked.
+input[type="radio"]:checked label .inner:before {
+  opacity: 1;
+  transform: scale(1.5);
+  transition: all .2s ease;
+}
+//Effect when box is checked.
+input[type="radio"]:focus + label .outer .inner:before {
+  opacity: 1;
+  transform: scale(1.5);
+  transition: all .3s ease;
+  -webkit-transition-delay: .5s;
+}
+//Color change and ripple animation around checkbox.
+input[type="radio"]:focus + label .outer {
+  transform: translate(0.09em, 0.09em);
+  box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.1);
+  border: 3px solid $radio;
+  -webkit-transition-delay: .5s;
+  -webkit-animation: boom .75s ease-out;
+  -webkit-animation-delay: .5s;
+}
+//Text color change and underline when clicked.
+input[type="radio"]:focus + label .inlet .text__effect {
+  transition: all .2s ease-out;
+  -webkit-transition-delay: .5s;
+  color:$radio;
+  border-bottom:1px solid $radio;
+  border-bottom-height:20px;
+}
+//Adds pointer cursor to text when hovered.
+input[type="radio"] + label .inlet .text__effect {
+  cursor:pointer;
+}
+//Sends paperplane into button.
+input[type="radio"]:focus + label .outer .inner:after {
+  opacity: 1;
+  -webkit-transform: translate(140px, -150px) scale(.01);
+  transition: all 0.75s ease;
+}
+//Checkbox circle.
+.outer {
+  width: 30px;
+  height: 30px;
+  border: 3px solid $radio;
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  margin: 25px 20px 0 0px;
+  border-radius: 50%;
+  cursor: pointer;
+  top: 0;
+  & .inner:before:hover {
+    opacity: 1;
+  }
+}
+//Checkmark & paperplane.
+.inner {
+  position: relative;
+  font-family: FontAwesome;
+  //Checkmark.
+  &:before {
+    content: "\f00c";
+    @extend %glyphcon;
+    top: 50%;
+    left: 7px;
+    color: $radio;
+    transform: scale(0) translateY(-50%);
+  }
+  //Paperplane.
+  &:after {
+    content: '\f1d9';
+    @extend %glyphcon;
+    left: -140px;
+    bottom: -180px;
+    font-size: 2em;
+    transform: scale(3);
+    color: $radio;
+  }
+}
+//Label text. Wrapped in span to control border-bottom.
+.inlet {
+  font-family: Poiret One;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  position: relative;
+  top: -27px;
+  left: 50px;
+  color: $primary;
+}
+
+//Animation.
+@keyframes boom {
+  0% {
+    box-shadow: 0px 0px 0px 15px rgba(100, 100, 100, 0.25);
+    100% {
+      box-shadow: 0px 0px 0px 15px rgba(100, 100, 100, 0.0);
+    }
+  }
+}
+
+.error {
+  font-family: 'Poiret One';
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  font-style: italic;
+  color: red;
+  margin-top: 20px;
+}
+
+.link {
+  font-family: 'Poiret One';
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  font-style: italic;
+  margin-top: 20px;
+  color: $radio;
+}
